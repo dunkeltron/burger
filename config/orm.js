@@ -1,4 +1,4 @@
-var connection = require("connection.js");
+var connection = require("./connection.js");
 //Helper function to help convert to SQL syntax
 //creates a narray of question marks then converts the array to a string 
 //used to pass values into the querystring
@@ -20,7 +20,7 @@ function objToSql(ob){
     //loop through the object's keys 
     for (var key in ob){
         var value = ob[key];
-        if(Object.hasOwnProperty.call(cb,key))  {
+        if(Object.hasOwnProperty.call(ob,key))  {
             //if the string has spaces put it in quotes so it 
             if (typeof value === "string" && value.indexOf(" ") >=0){
                 value = "'" + value + "'";
@@ -41,7 +41,7 @@ var orm = {
 
 
     selectAll : function(tableInput, cb) {
-        var queryString = "SELECT FROM " + tableInput + ";";
+        var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function(err,result){
             if(err){
                 throw err;
@@ -52,13 +52,14 @@ var orm = {
 
     insertOne : function(table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
-        queryString +="(";
+        queryString +=" (";
         queryString +=cols.toString();  //we want to modify all of the columns in the table entry
         queryString +=")";
-        queryString +="VALUES (";
+        queryString +=" VALUES (";
         queryString += printQuestionMarks(vals.length); //create question marks for each value
         queryString +=") ";
-        connection.query(queryString,function(err,result){
+        console.log(queryString);
+        connection.query(queryString,vals,function(err,result){
             if(err){
                 throw err;
             }
@@ -78,17 +79,19 @@ var orm = {
             }
             cb(result);
         });
-    },
-    deleteOne : function(table, condition, cb){
-        var queryString = "DELETE FROM " + table;
-        queryString += " WHERE ";
-        queryString += condition;
-        connection.query(queryString,function(err,result){
-            if(err){
-                throw err;
-            }
-            cb(result);
-        });
-    }
+     }
+    //,
+    // deleteOne : function(table, condition, cb){
+    //     var queryString = "DELETE FROM " + table;
+    //     queryString += " WHERE ";
+    //     queryString += condition;
+    //     console.log(queryString);
+    //     connection.query(queryString,function(err,result){
+    //         if(err){
+    //             throw err;
+    //         }
+    //         cb(result);
+    //     });
+    // }
 }
 module.exports = orm;

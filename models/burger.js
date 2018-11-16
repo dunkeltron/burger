@@ -13,15 +13,16 @@ var burger = {
         });
     },
     update: function(objColVals,condition,cb){
-        orm.updateOne("burgers",objColVals,condition,cb,function(res){
-            cb(res);
-        });
-    },
-    delete: function(condition,cb){
-        orm.deleteOne("burgers",condition,function(res){
+        orm.updateOne("burgers",objColVals,condition,function(res){
             cb(res);
         });
     }
+    // ,
+    // delete: function(condition,cb){
+    //     orm.deleteOne("burgers",condition,function(res){
+    //         cb(res);
+    //     });
+    // }
 }
 // * Export at the end of the `burger.js` file.
 
