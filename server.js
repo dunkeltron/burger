@@ -2,14 +2,15 @@
 //set up express
 var express = require("express");
 
-
+//assign a value for the port variable 
+//if on heroku must be process.env.PORT
 var PORT = process.env.PORT || 8080;
 
 var app = express();
 
 //serve static content for the app from the "public" directory in the application directory
 
-app.use(express.static("/public"));
+app.use(express.static("/public/"));
 
 //parse application body as json
 app.use(express.urlencoded({extended : true}));
