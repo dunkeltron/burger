@@ -8,8 +8,8 @@ var PORT = process.env.port || 8080;
 var app = express();
 
 //serve static content for the app from the "public" directory in the application directory
-//??Used to get the handlebars files??
-app.use(express.static("public"));
+
+app.use(express.static(__dirname+"/public"));
 
 //parse application body as json
 app.use(express.urlencoded({extended : true}));

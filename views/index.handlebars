@@ -1,15 +1,40 @@
 <h1>Eat Da Burgers!</h1>
-
+<div id="photoBlock">
+    <img id="burgerPhoto" src="assets/img/burger.png">
+</div>
 <h2> Burgers</h2>
-<ul>
-    {{#each burgers}}
-    {{/each}}
-</ul>
+
+<div id="burgerBlock" class="clearfix">
+
+    <div id="listBlock">
+        <div class="ready-list">
+            <ol class="burger-list">
+                {{#each burgers}}
+                {{#unless devoured}}
+                {{>burgers/burger-block devoured=true}}
+                {{/unless}}
+                {{/each}}
+            </ol>
+        </div>
+        <div class="devoured-list ">
+            <ol class="burger-list">
+                {{#each burgers}}
+                {{#if devoured}}
+                {{>burgers/burger-block devoured=false}}
+                {{/if}}
+                {{/each}}
+            </ol>
+        </div>
+    </div>
+</div>
 <h2>Add a burger</h2>
-<form class="create-form">
+<div class='create-block'>
+    <form class="create-form clearfix">
         <div class="form-group">
             <label for="ca">Burger Name:</label>
-                <input type="text" id="ca" name="burger">
+            <input type="text" id="ca" name="burger">
+            <button type="submit">Add Burger</button>
         </div>
-        <button type = "submit">Add Burger</button> 
-</form> 
+
+    </form>
+</div>
