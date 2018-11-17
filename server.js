@@ -9,7 +9,7 @@ var app = express();
 
 //serve static content for the app from the "public" directory in the application directory
 
-app.use(express.static("./public"));
+app.use(express.static("/public"));
 
 //parse application body as json
 app.use(express.urlencoded({extended : true}));
