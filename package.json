@@ -16,6 +16,9 @@
   "bugs": {
     "url": "https://github.com/dunkeltron/burger/issues"
   },
+  "engines":{
+    "node": "8.11.3"
+  },
   "homepage": "https://github.com/dunkeltron/burger#readme",
   "dependencies": {
     "express": "^4.16.4",
