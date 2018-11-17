@@ -1,6 +1,6 @@
 <h1>Eat Da Burgers!</h1>
 <div id="photoBlock">
-    <img id="burgerPhoto" src="assets/img/burger.png">
+    <img id="burgerPhoto" src="/assets/img/burger.png">
 </div>
 <h2> Burgers</h2>
 
@@ -8,7 +8,7 @@
 
     <div id="listBlock">
         <div class="ready-list">
-            <ol class="burger-list">
+            <ol c>
                 {{#each burgers}}
                 {{#unless devoured}}
                 {{>burgers/burger-block devoured=true}}
@@ -17,7 +17,7 @@
             </ol>
         </div>
         <div class="devoured-list ">
-            <ol class="burger-list">
+            <ol >
                 {{#each burgers}}
                 {{#if devoured}}
                 {{>burgers/burger-block devoured=false}}
