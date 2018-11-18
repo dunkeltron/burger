@@ -100,6 +100,17 @@ h2 {
 }
 
 @media only screen and (max-width: 850px) {
+    #photoBlock {
+        position: relative;
+        left: 35%;
+        width: 30%;
+        justify-content: center;
+    }
+    
+    #burgerPhoto {
+        width: 100%;
+        height: auto;
+    }
     #listBlock {
         width: 100%;
         justify-content: center;
